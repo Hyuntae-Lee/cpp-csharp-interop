@@ -13,6 +13,7 @@
 #define new DEBUG_NEW
 #endif
 
+__declspec(dllexport) void open_angio_viewer();
 
 // CMFCApplication1App
 
@@ -106,6 +107,9 @@ BOOL CMFCApplication1App::InitInstance()
 	// The one and only window has been initialized, so show and update it
 	pFrame->ShowWindow(SW_SHOW);
 	pFrame->UpdateWindow();
+
+	open_angio_viewer();
+
 	return TRUE;
 }
 
@@ -152,12 +156,10 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-__declspec(dllexport) void open_angio_viewer();
-
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
-	open_angio_viewer();
+	
 }
 
 // CMFCApplication1App message handlers

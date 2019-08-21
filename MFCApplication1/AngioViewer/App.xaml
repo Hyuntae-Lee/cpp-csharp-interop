@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:AngioViewer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>
