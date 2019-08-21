@@ -11,7 +11,7 @@ namespace libAngioViewerCLR {
 	{
 	public:
 		static void open_viewer() {
-			libAngioViewer::Viewer::open_viewer();
+			libAngioViewer::Entry::open_viewer();
 		}
 	};
 }
