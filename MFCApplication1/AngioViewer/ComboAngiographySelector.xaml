@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="AngioViewer.ComboAngiographySelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AngioViewer"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="300">
+    <Grid>
+        <ComboBox Style="{DynamicResource AngiographySelector}" Height="auto" Width="auto" >
+            <ComboBoxItem Name="item1">item1</ComboBoxItem>
+            <ComboBoxItem Name="item2">item2</ComboBoxItem>
+            <ComboBoxItem Name="item3">item3</ComboBoxItem>
+        </ComboBox>
+    </Grid>
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ComboBox}" x:Key="AngiographySelector">
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="ItemTemplate" Value="{DynamicResource AngiographySelectorItemTemplate}"/>
+        </Style>
+
+        <DataTemplate x:Key="AngiographySelectorItemTemplate">
+            <ContentPresenter/>
+        </DataTemplate>
+    </UserControl.Resources>
+</UserControl>

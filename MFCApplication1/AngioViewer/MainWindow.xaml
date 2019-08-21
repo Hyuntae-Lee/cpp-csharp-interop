@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="58" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <uc:PatientInfo Grid.Row="0"/>
         <uc:TabBar Grid.Row="1"/>

@@ -56,11 +56,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AngioGraphyViewer.xaml.cs">
+      <DependentUpon>AngioGraphyViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BothPage.xaml.cs">
       <DependentUpon>BothPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ComboAngiographySelector.xaml.cs">
+      <DependentUpon>ComboAngiographySelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CompPage.xaml.cs">
       <DependentUpon>CompPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageTitleSingle.xaml.cs">
+      <DependentUpon>PageTitleSingle.xaml</DependentUpon>
     </Compile>
     <Compile Include="PatientInfo.xaml.cs">
       <DependentUpon>PatientInfo.xaml</DependentUpon>
@@ -74,7 +83,15 @@
     <Compile Include="TabBar.xaml.cs">
       <DependentUpon>TabBar.xaml</DependentUpon>
     </Compile>
+    <Page Include="AngioGraphyViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BothPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComboAngiographySelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,6 +111,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageTitleSingle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PatientInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +202,9 @@
     <Resource Include="images\top_report_btn_n.png" />
     <Resource Include="images\top_report_btn_o.png" />
     <Resource Include="images\top_report_btn_p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\angiography_sample.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
