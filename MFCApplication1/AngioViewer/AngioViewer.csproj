@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -59,6 +60,7 @@
     <Compile Include="AngioGraphyViewer.xaml.cs">
       <DependentUpon>AngioGraphyViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Defs.cs" />
     <Compile Include="BothPage.xaml.cs">
       <DependentUpon>BothPage.xaml</DependentUpon>
     </Compile>
@@ -68,6 +70,7 @@
     <Compile Include="CompPage.xaml.cs">
       <DependentUpon>CompPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MeasurementData.cs" />
     <Compile Include="PageTitleSingle.xaml.cs">
       <DependentUpon>PageTitleSingle.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,7 @@
     <Compile Include="TabBar.xaml.cs">
       <DependentUpon>TabBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <Page Include="AngioGraphyViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,6 +210,7 @@
   <ItemGroup>
     <Resource Include="images\angiography_sample.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

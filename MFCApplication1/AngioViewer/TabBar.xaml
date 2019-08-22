@@ -7,11 +7,10 @@
              mc:Ignorable="d" Background="#242530"
              Height="50" Width="1280">
     <Grid>
-        <Button Style="{DynamicResource TabButton}" Margin="-500,6,0,6" Content="OD"/>
-        <Button Style="{DynamicResource TabButton}" Margin="-250,6,0,6" Content="OS"/>
-        <Button Style="{DynamicResource TabButton}" Margin="0,6,0,6" Content="OU"/>
-        <Button Style="{DynamicResource TabButton}" Margin="250,6,0,6" Content="Compare"/>
-        <Button Style="{DynamicResource TabButton}" Margin="500,6,0,6" Content="Progression"/>
+        <Button Style="{DynamicResource TabButton}" Margin="-372,6,0,6" Content="Single" Click="OnSingleButtonClick"/>
+        <Button Style="{DynamicResource TabButton}" Margin="-125,6,0,6" Content="Both" Click="OnBothButtonClick"/>
+        <Button Style="{DynamicResource TabButton}" Margin="125,6,0,6" Content="Compare" Click="OnCompareButtonClick"/>
+        <Button Style="{DynamicResource TabButton}" Margin="372,6,0,6" Content="Progression" Click="OnProgressionButtonClick"/>
     </Grid>
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}" x:Key="TabButton">

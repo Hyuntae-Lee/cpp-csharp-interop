@@ -23,6 +23,49 @@ namespace AngioViewer
         public MainWindow()
         {
             InitializeComponent();
+
+            //
+            m_singlePage = new SinglePage();
+            m_bothPage = new BothPage();
+            m_compPage = new CompPage();
+            m_progPage = new ProgPage();
+
+            //
+            this.tabBar.PageButtonClicked += TabBar_PageButtonClicked;
+
+            // default page
+            SwitchPage(m_singlePage);
         }
+
+        private void SwitchPage(Page page)
+        {
+            this.page.Content = page;
+        }
+
+        private void TabBar_PageButtonClicked(string obj)
+        {
+            if (obj == Defs.PageName_Single)
+            {
+                SwitchPage(m_singlePage);
+            }
+            else if (obj == Defs.PageName_Both)
+            {
+                SwitchPage(m_bothPage);
+            }
+            else if (obj == Defs.PageName_Compare)
+            {
+                SwitchPage(m_compPage);
+            }
+            else if (obj == Defs.PageName_Progression)
+            {
+                SwitchPage(m_progPage);
+            }
+        }
+
+        // pages
+        Page m_singlePage;
+        Page m_bothPage;
+        Page m_compPage;
+        Page m_progPage;
     }
 }

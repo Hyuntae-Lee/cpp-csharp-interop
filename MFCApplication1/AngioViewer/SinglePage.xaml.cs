@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace AngioViewer
 {
     /// <summary>
@@ -23,6 +24,8 @@ namespace AngioViewer
         public SinglePage()
         {
             InitializeComponent();
+
+            //Utils.
         }
     }
 }

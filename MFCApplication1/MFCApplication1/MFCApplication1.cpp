@@ -13,7 +13,7 @@
 #define new DEBUG_NEW
 #endif
 
-__declspec(dllexport) void open_angio_viewer();
+__declspec(dllexport) void open_angio_viewer(char* data_dir);
 
 // CMFCApplication1App
 
@@ -108,7 +108,7 @@ BOOL CMFCApplication1App::InitInstance()
 	pFrame->ShowWindow(SW_SHOW);
 	pFrame->UpdateWindow();
 
-	open_angio_viewer();
+	open_angio_viewer("D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD");
 
 	return TRUE;
 }

@@ -20,9 +20,31 @@ namespace AngioViewer
     /// </summary>
     public partial class TabBar : UserControl
     {
+        public event Action<string> PageButtonClicked;
+
         public TabBar()
         {
             InitializeComponent();
+        }
+
+        private void OnSingleButtonClick(object sender, RoutedEventArgs e)
+        {
+            PageButtonClicked(Defs.PageName_Single);
+        }
+
+        private void OnBothButtonClick(object sender, RoutedEventArgs e)
+        {
+            PageButtonClicked(Defs.PageName_Both);
+        }
+
+        private void OnCompareButtonClick(object sender, RoutedEventArgs e)
+        {
+            PageButtonClicked(Defs.PageName_Compare);
+        }
+
+        private void OnProgressionButtonClick(object sender, RoutedEventArgs e)
+        {
+            PageButtonClicked(Defs.PageName_Progression);
         }
     }
 }
