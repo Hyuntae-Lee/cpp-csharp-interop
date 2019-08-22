@@ -8,9 +8,13 @@ namespace AngioViewer
 {
     class Defs
     {
-        public static String PageName_Single = "Single";
-        public static String PageName_Both = "Both";
-        public static String PageName_Compare = "Compare";
-        public static String PageName_Progression = "Progression";
+        // page name
+        public const String kPageNameSingle = "Single";
+        public const String kPageNameBoth = "Both";
+        public const String kPageNameCompare = "Compare";
+        public const String kPageNameProgression = "Progression";
+
+        // data file name
+        public const String kAngioGraphyInfoFileName = "angiography_info.json";
     }
 }

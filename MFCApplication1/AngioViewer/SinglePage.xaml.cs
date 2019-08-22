@@ -24,8 +24,6 @@ namespace AngioViewer
         public SinglePage()
         {
             InitializeComponent();
-
-            //Utils.
         }
     }
 }

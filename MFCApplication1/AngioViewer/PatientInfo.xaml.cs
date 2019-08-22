@@ -23,6 +23,15 @@ namespace AngioViewer
         public PatientInfo()
         {
             InitializeComponent();
+
+            this.DataContext = this;
         }
+
+        public void refreshData()
+        {
+            PatientInfoString = MeasurementData.Ins.CurPatientData.toString();
+        }
+
+        public String PatientInfoString { set; get; }
     }
 }

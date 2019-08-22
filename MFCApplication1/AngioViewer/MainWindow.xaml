@@ -14,7 +14,7 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <uc:PatientInfo Grid.Row="0"/>
+        <uc:PatientInfo x:Name="patientInfo" Grid.Row="0"/>
         <uc:TabBar x:Name="tabBar" Grid.Row="1"/>
         <Frame Name="page" Grid.Row="2" NavigationUIVisibility="Hidden"/>
     </Grid>

@@ -24,6 +24,13 @@ namespace AngioViewer
         {
             InitializeComponent();
 
+            // load data
+            String infoFilePath = MeasurementData.Ins.DataDir + "/" + Defs.kAngioGraphyInfoFileName;
+            Utils.LoadJsonTo(infoFilePath, MeasurementData.Ins);
+
+            // patient info. bar
+            this.patientInfo.refreshData();
+
             //
             m_singlePage = new SinglePage();
             m_bothPage = new BothPage();
@@ -44,19 +51,19 @@ namespace AngioViewer
 
         private void TabBar_PageButtonClicked(string obj)
         {
-            if (obj == Defs.PageName_Single)
+            if (obj == Defs.kPageNameSingle)
             {
                 SwitchPage(m_singlePage);
             }
-            else if (obj == Defs.PageName_Both)
+            else if (obj == Defs.kPageNameBoth)
             {
                 SwitchPage(m_bothPage);
             }
-            else if (obj == Defs.PageName_Compare)
+            else if (obj == Defs.kPageNameCompare)
             {
                 SwitchPage(m_compPage);
             }
-            else if (obj == Defs.PageName_Progression)
+            else if (obj == Defs.kPageNameProgression)
             {
                 SwitchPage(m_progPage);
             }

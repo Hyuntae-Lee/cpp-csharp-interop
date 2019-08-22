@@ -9,7 +9,8 @@
              Background="#DAE2EC">
     <Grid>
         <Image Width="47" Height="47" Source="images/patient_ic.png" HorizontalAlignment="Left" Margin="10,6,10,6" />
-        <Label Height="47" Width="600" HorizontalAlignment="Left" Content="TTT/TTT" Margin="67,6,10,5" />
+        <Label Height="47" HorizontalAlignment="Left" VerticalAlignment="Center"
+               VerticalContentAlignment="Center" Margin="67,6,10,5" Content="{ Binding PatientInfoString, Mode=OneWay }" />
         <Button Width="47" Height="47" HorizontalAlignment="Right" Margin="0,6,20,5">
             <Button.Template>
                 <ControlTemplate TargetType="Button">

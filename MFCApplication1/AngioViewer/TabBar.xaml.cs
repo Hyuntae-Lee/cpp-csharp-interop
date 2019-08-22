@@ -29,22 +29,22 @@ namespace AngioViewer
 
         private void OnSingleButtonClick(object sender, RoutedEventArgs e)
         {
-            PageButtonClicked(Defs.PageName_Single);
+            PageButtonClicked(Defs.kPageNameSingle);
         }
 
         private void OnBothButtonClick(object sender, RoutedEventArgs e)
         {
-            PageButtonClicked(Defs.PageName_Both);
+            PageButtonClicked(Defs.kPageNameBoth);
         }
 
         private void OnCompareButtonClick(object sender, RoutedEventArgs e)
         {
-            PageButtonClicked(Defs.PageName_Compare);
+            PageButtonClicked(Defs.kPageNameCompare);
         }
 
         private void OnProgressionButtonClick(object sender, RoutedEventArgs e)
         {
-            PageButtonClicked(Defs.PageName_Progression);
+            PageButtonClicked(Defs.kPageNameProgression);
         }
     }
 }
