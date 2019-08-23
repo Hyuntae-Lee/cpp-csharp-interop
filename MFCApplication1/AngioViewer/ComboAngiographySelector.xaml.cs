@@ -44,6 +44,15 @@ namespace AngioViewer
             }
         }
 
+        public void updateList(List<MeasurementData.DataMapItem> itemList)
+        {
+            comboBox.Items.Clear();
+            foreach (var item in itemList)
+            {
+                comboBox.Items.Add(item.Name);
+            }
+        }
+
         public void changeCurrentSelection(int index)
         {
             comboBox.SelectedIndex = index;

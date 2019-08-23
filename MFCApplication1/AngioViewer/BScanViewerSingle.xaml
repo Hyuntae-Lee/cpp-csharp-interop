@@ -1,23 +1,22 @@
-﻿<UserControl x:Class="AngioViewer.AngioGraphyViewer"
+﻿<UserControl x:Class="AngioViewer.BScanViewerSingle"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:uc="clr-namespace:AngioViewer"
              xmlns:local="clr-namespace:AngioViewer"
-             mc:Ignorable="d"
-             Width="310" Height="310"
-             BorderThickness="1">
+             xmlns:uc="clr-namespace:AngioViewer"
+             mc:Ignorable="d" 
+             Width="628">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="36" />
             <RowDefinition Height="2" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="266" />
         </Grid.RowDefinitions>
 
-        <uc:ComboAngiographySelector x:Name="itemSelector" Grid.Row="0" Width="310"/>
+        <uc:ComboLayerSelector x:Name="layerSelector" Grid.Row="0"/>
         <Grid Grid.Row="2" Background="#1F2329">
-            <Image Name="itemImage" Width="240" Height="240"/>
+            <Image Name="itemImage" Width="558" Height="240" Stretch="Fill" Source="images/angiography_sample.jpg"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -64,23 +64,29 @@ namespace AngioViewer
         // inner classes
         public class PatientData
         {
+            public String BirthDate { get; set; }
+            public String ID { get; set; }
+            public String Name { get; set; }
+
             public String toString()
             {
                 return ID + " / " + Name;
             }
 
-            public String BirthDate { get; set; }
-            public String ID { get; set; }
-            public String Name { get; set; }
+            public static PatientData fromJson(dynamic array)
+            {
+                var newItem = new PatientData();
+
+                newItem.BirthDate = array["birth_date"];
+                newItem.ID = array["id"];
+                newItem.Name = array["name"];
+
+                return newItem;
+            }
         }
 
         public class ExamInfo
         {
-            public String toString()
-            {
-                return ExamDate + " / " + ExamTime + " / " + BScanNum + "x" + AScanNum + " / " + RangeX + "x" + RangeY + "mm / SSI: " + Ssi;
-            }
-
             public int AScanNum { get; set; }
             public int BScanNum { get; set; }
             public String DataDir { get; set; }
@@ -92,12 +98,37 @@ namespace AngioViewer
             public int RangeY { get; set; }
             public EyeSide Side { get; set; }
             public int Ssi { get; set; }
+
+            public String toString()
+            {
+                return ExamDate + " / " + ExamTime + " / " + BScanNum + "x" + AScanNum + " / " + RangeX + "x" + RangeY + "mm / SSI: " + Ssi;
+            }
+
+            public static ExamInfo fromJson(dynamic array)
+            {
+                var newItem = new ExamInfo();
+
+                newItem.AScanNum = array["ascan_num"];
+                newItem.BScanNum = array["bscan_num"];
+                newItem.DataDir = array["data_dir"];
+                newItem.ExamDate = array["exam_date"];
+                newItem.ExamTime = array["exam_time"];
+                newItem.Horizontal = array["horizontal"];
+                newItem.Overlap = array["overlap"];
+                newItem.RangeX = array["range_x"];
+                newItem.RangeY = array["range_y"];
+                newItem.Side = array["side"] == "OD" ? EyeSide.OD : EyeSide.OS;
+                newItem.Ssi = array["ssi"];
+
+                return newItem;
+            }
         }
 
         public class AngiographyItem
         {
             public AngiographyItem()
             {
+                DataMapList = new List<DataMapItem>();
             }
 
             public String ImageName { get; set; }
@@ -112,6 +143,34 @@ namespace AngioViewer
             public List<DataMapItem> DataMapList { get; set; }
             public AngioFlows Flows { get; set; }
             public AngioDensity Density { get; set; }
+
+            public static AngiographyItem fromJson(dynamic array)
+            {
+                var newItem = new AngiographyItem();
+
+                // name
+                newItem.ImageName = array["image_name"];
+                newItem.Name = array["name"];
+                // upper layer
+                newItem.UpperLayer = MeasurementData.Ins.findBScanLayerByName(array["upper_layer"].Value);
+                newItem.UpperOffset = array["upper_offset"];
+                // lower layer
+                newItem.LowerLayer = MeasurementData.Ins.findBScanLayerByName(array["lower_layer"].Value);
+                newItem.UpperOffset = array["lower_offset"];
+
+                // data map list
+                var arrDataMap = array["data_map_list"];
+                List<DataMapItem> dataMapList = new List<DataMapItem>();
+                foreach (var item in arrDataMap)
+                {
+                    var dataMapItem = DataMapItem.fromJson(item);
+                    dataMapList.Add(dataMapItem);
+                }
+                newItem.DataMapList.Clear();
+                newItem.DataMapList.AddRange(dataMapList);
+
+                return newItem;
+            }
         }
 
         public enum EyeSide
@@ -155,10 +214,17 @@ namespace AngioViewer
         {
             public String ImageName { get; set; }
             public String Name { get; set; }
-            //        this.data = null;
-            //        this.dataPng = new PngImage();
-            //        this.getColorCode = null;
-            //        this.minGrayLevelForBase = 0;
+
+            public static DataMapItem fromJson(dynamic array)
+            {
+                var newItem = new DataMapItem();
+
+                // name
+                newItem.ImageName = array["image_name"];
+                newItem.Name = array["name"];
+
+                return newItem;
+            }
         }
 
         public struct AngioFlows

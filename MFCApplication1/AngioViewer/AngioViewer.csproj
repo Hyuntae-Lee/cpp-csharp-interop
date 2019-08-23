@@ -64,6 +64,12 @@
     <Compile Include="AngioGraphyViewer.xaml.cs">
       <DependentUpon>AngioGraphyViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BScanViewerSingle.xaml.cs">
+      <DependentUpon>BScanViewerSingle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComboLayerSelector.xaml.cs">
+      <DependentUpon>ComboLayerSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Defs.cs" />
     <Compile Include="BothPage.xaml.cs">
       <DependentUpon>BothPage.xaml</DependentUpon>
@@ -99,7 +105,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BScanViewerSingle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ComboAngiographySelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComboLayerSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

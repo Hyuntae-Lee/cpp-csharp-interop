@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:AngioViewer"
         xmlns:uc="clr-namespace:AngioViewer"
         mc:Ignorable="d"
-        Title="Oct Angio" Height="800" Width="1280">
+        Title="Oct Angio" Height="800" Width="1280"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <Grid>
         <Grid.RowDefinitions>
