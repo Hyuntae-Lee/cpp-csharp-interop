@@ -12,7 +12,6 @@ namespace libAngioViewer
         public static void open_viewer(String data_dir)
         {
             AngioViewer.MeasurementData.Ins.DataDir = data_dir;
-
             AngioViewer.MainWindow main = new AngioViewer.MainWindow();
             main.ShowDialog();
         }

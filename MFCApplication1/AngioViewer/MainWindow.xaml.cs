@@ -24,24 +24,39 @@ namespace AngioViewer
         {
             InitializeComponent();
 
+            // init. controls
+            m_singlePage = new SinglePage();
+            m_bothPage = new BothPage();
+            m_compPage = new CompPage();
+            m_progPage = new ProgPage();
+
+            // TTT
+            //MeasurementData.Ins.DataDir = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD";
+
             // load data
             String infoFilePath = MeasurementData.Ins.DataDir + "/" + Defs.kAngioGraphyInfoFileName;
             Utils.LoadJsonTo(infoFilePath, MeasurementData.Ins);
 
             // patient info. bar
-            this.patientInfo.refreshData();
+            patientInfo.refreshData();
 
             //
-            m_singlePage = new SinglePage();
-            m_bothPage = new BothPage();
-            m_compPage = new CompPage();
-            m_progPage = new ProgPage();
+            UpdatePages();
 
             //
             this.tabBar.PageButtonClicked += TabBar_PageButtonClicked;
 
             // default page
             SwitchPage(m_singlePage);
+        }
+
+        private void UpdatePages()
+        {
+            m_singlePage.updateData(MeasurementData.Ins.CurExamInfo, MeasurementData.Ins.CurAngiographyItemList);
+
+            //m_bothPage;
+            //m_compPage;
+            //m_progPage;
         }
 
         private void SwitchPage(Page page)
@@ -70,9 +85,9 @@ namespace AngioViewer
         }
 
         // pages
-        Page m_singlePage;
-        Page m_bothPage;
-        Page m_compPage;
-        Page m_progPage;
+         SinglePage m_singlePage;
+         BothPage m_bothPage;
+         CompPage m_compPage;
+         ProgPage m_progPage;
     }
 }

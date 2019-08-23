@@ -15,7 +15,7 @@
         <!-- eye side -->
         <Image Grid.Column="0" Source="images/od.png" Width="44" Height="26"/>
         <!-- measurement info. -->
-        <Label Grid.Column="1" Content="TTTTTTTTTTTTTTTTTTT" Foreground="white" VerticalAlignment="Center"/>
+        <Label Grid.Column="1" Content="{Binding ExamDescription, Mode = OneWay}" Foreground="white" VerticalAlignment="Center"/>
         <!-- detail button -->
         <ToggleButton Grid.Column="2" Width="97" Height="34" HorizontalAlignment="Left" Margin="80,3,0,3">
             <ToggleButton.Template>

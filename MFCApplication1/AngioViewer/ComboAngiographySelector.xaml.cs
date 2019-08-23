@@ -20,9 +20,33 @@ namespace AngioViewer
     /// </summary>
     public partial class ComboAngiographySelector : UserControl
     {
+        public event Action<int> ItemSelected;
+
         public ComboAngiographySelector()
         {
             InitializeComponent();
+
+            comboBox.SelectionChanged += ComboBox_SelectionChanged;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var objSender = sender as ComboBox;
+            ItemSelected(objSender.SelectedIndex);
+        }
+
+        public void updateList(List<MeasurementData.AngiographyItem> itemList)
+        {
+            comboBox.Items.Clear();
+            foreach (var item in itemList)
+            {
+                comboBox.Items.Add(item.Name);
+            }
+        }
+
+        public void changeCurrentSelection(int index)
+        {
+            comboBox.SelectedIndex = index;
         }
     }
 }

@@ -22,14 +22,14 @@ namespace AngioViewer
 
             // angiography list
             var arrAngioGraphy = array["angiography_list"];
-            List<MeasurementData.AngiographyItem> angioGraphyList = new List<MeasurementData.AngiographyItem>();
+            List<MeasurementData.AngiographyItem> angiographyList = new List<MeasurementData.AngiographyItem>();
             foreach (var item in arrAngioGraphy)
             {
                 var newItem = parseAngiographyItem(item);
-                angioGraphyList.Add(newItem);
+                angiographyList.Add(newItem);
             }
             measurementData.CurAngiographyItemList.Clear();
-            measurementData.CurAngiographyItemList.AddRange(angioGraphyList);
+            measurementData.CurAngiographyItemList.AddRange(angiographyList);
             // exam info
             measurementData.CurExamInfo = parseExamInfo(array["exam_info"]);
             // patient info

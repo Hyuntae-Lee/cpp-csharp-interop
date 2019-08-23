@@ -320,7 +320,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <ComboBox Foreground="White" BorderThickness="0" Style="{DynamicResource ComboBoxStyleAngiographySelector}"
+        <ComboBox Name="comboBox" Foreground="White" BorderThickness="0" Style="{DynamicResource ComboBoxStyleAngiographySelector}"
                   ItemContainerStyle="{DynamicResource AngiographySelectorItemStyle}"
                   Height="auto" Width="auto">
             <ComboBoxItem x:Name="item1" Content="item1"/>

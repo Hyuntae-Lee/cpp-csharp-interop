@@ -23,6 +23,10 @@ namespace AngioViewer
         public PageTitleSingle()
         {
             InitializeComponent();
+
+            this.DataContext = this;
         }
+
+        public String ExamDescription { get; set; }
     }
 }
