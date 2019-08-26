@@ -80,6 +80,9 @@
     <Compile Include="CompPage.xaml.cs">
       <DependentUpon>CompPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LayerSelectorSingle.xaml.cs">
+      <DependentUpon>LayerSelectorSingle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MeasurementData.cs" />
     <Compile Include="PageTitleSingle.xaml.cs">
       <DependentUpon>PageTitleSingle.xaml</DependentUpon>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CompPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LayerSelectorSingle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

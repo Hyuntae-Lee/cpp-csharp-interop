@@ -14,7 +14,16 @@
             <RowDefinition Height="266" />
         </Grid.RowDefinitions>
 
-        <uc:ComboLayerSelector x:Name="layerSelector" Grid.Row="0"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <uc:LayerSelectorSingle x:Name="layerSelectorUpper" Grid.Column="0"/>
+            <uc:LayerSelectorSingle x:Name="layerSelectorLower" Grid.Column="2"/>
+        </Grid>
+        
         <Grid Grid.Row="2" Background="#1F2329">
             <Image Name="itemImage" Width="558" Height="240" Stretch="Fill" Source="images/angiography_sample.jpg"/>
         </Grid>

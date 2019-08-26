@@ -26,39 +26,55 @@ namespace AngioViewer
             InitializeComponent();
 
             //
-            this.DataContext = this;
+            DataContext = this;
 
-            //
+            // angio graphy
             angiography_0.MouseLeftButtonDown += Angiography_MouseLeftButtonDown;
             angiography_1.MouseLeftButtonDown += Angiography_MouseLeftButtonDown;
             angiography_2.MouseLeftButtonDown += Angiography_MouseLeftButtonDown;
             angiography_3.MouseLeftButtonDown += Angiography_MouseLeftButtonDown;
             angiography_4.MouseLeftButtonDown += Angiography_MouseLeftButtonDown;
+
+            // bscan
+            bscanViewer.LayerSettingsChanged += BscanViewer_LayerSettingsChanged;
         }
 
-        private void selectAngiographyItem(MeasurementData.AngiographyItem item)
+        public void initPage()
         {
+            selectAngiographyItem(angiography_0);
+        }
+
+        private void BscanViewer_LayerSettingsChanged(MeasurementData.BScanLayerItem arg1, int arg2, MeasurementData.BScanLayerItem arg3, int arg4)
+        {
+            // TODO : update angio graphy
+            //throw new NotImplementedException();
+        }
+
+        private void selectAngiographyItem(AngioGraphyViewer viewer)
+        {
+            var item = viewer.getCurrentAngiographyItem();
+
+            // hightlight item
+            viewer.BorderBrush = new SolidColorBrush(Colors.Red);
+
             // data map
             dataMap_0.setItemList(item.DataMapList, 0, DataDir);
 
             // bscan
+            bscanViewer.setLayerSettings(item.UpperLayer, item.UpperOffset, item.LowerLayer, item.LowerOffset);
         }
 
         private void Angiography_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var selectedViewer = sender as AngioGraphyViewer;
-
-            // hightlight item
+            // reset selection
             angiography_0.BorderBrush = new SolidColorBrush(Colors.Transparent);
             angiography_1.BorderBrush = new SolidColorBrush(Colors.Transparent);
             angiography_2.BorderBrush = new SolidColorBrush(Colors.Transparent);
             angiography_3.BorderBrush = new SolidColorBrush(Colors.Transparent);
             angiography_4.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            selectedViewer.BorderBrush = new SolidColorBrush(Colors.Red);
 
             //
-            var item = selectedViewer.getCurrentAngiographyItem();
-            selectAngiographyItem(item);
+            selectAngiographyItem(sender as AngioGraphyViewer);
         }
 
         public void updateData(MeasurementData.ExamInfo examInfo, List<MeasurementData.AngiographyItem> angiographyList)

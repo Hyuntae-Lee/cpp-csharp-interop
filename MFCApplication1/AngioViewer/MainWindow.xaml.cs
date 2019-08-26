@@ -31,7 +31,7 @@ namespace AngioViewer
             m_progPage = new ProgPage();
 
             // TTT
-            //MeasurementData.Ins.DataDir = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD";
+            MeasurementData.Ins.DataDir = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD";
 
             // load data
             String infoFilePath = MeasurementData.Ins.DataDir + "/" + Defs.kAngioGraphyInfoFileName;
@@ -40,17 +40,19 @@ namespace AngioViewer
             // patient info. bar
             patientInfo.refreshData();
 
-            //
-            UpdatePages();
+            // page
+            updatePageData();
 
-            //
+            // tab
             this.tabBar.PageButtonClicked += TabBar_PageButtonClicked;
 
             // default page
             SwitchPage(m_singlePage);
+
+            m_singlePage.initPage();
         }
 
-        private void UpdatePages()
+        private void updatePageData()
         {
             m_singlePage.updateData(MeasurementData.Ins.CurExamInfo, MeasurementData.Ins.CurAngiographyItemList);
 

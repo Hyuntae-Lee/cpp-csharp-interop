@@ -9,8 +9,10 @@
              Height="36" d:DesignWidth="300">
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <uc:ComboLayerSelector Grid.Column="0" Width="123" HorizontalAlignment="Left" />
-            <TextBox MinWidth="50" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Black" Margin="4, 0, 4, 0"/>
+            <uc:ComboLayerSelector x:Name="layerSelector" Grid.Column="0" Width="123" HorizontalAlignment="Left" />
+            <TextBox Name="layerOffset" Text="0" Foreground="White" MinWidth="50" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     Background="Black" Margin="4, 0, 4, 0"/>
             <Button Width="36" Height="36" Content="+" Background="#39404A" Foreground="White"/>
             <Button Width="36" Height="36" Content="-" Background="#39404A" Foreground="White"/>
         </StackPanel>
