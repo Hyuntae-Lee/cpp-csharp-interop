@@ -64,6 +64,12 @@
     <Compile Include="AngioGraphyViewer.xaml.cs">
       <DependentUpon>AngioGraphyViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BScanGuideLIne.xaml.cs">
+      <DependentUpon>BScanGuideLIne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BScanIncDecBtn.xaml.cs">
+      <DependentUpon>BScanIncDecBtn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BScanViewerSingle.xaml.cs">
       <DependentUpon>BScanViewerSingle.xaml</DependentUpon>
     </Compile>
@@ -105,6 +111,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BothPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BScanGuideLIne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BScanIncDecBtn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

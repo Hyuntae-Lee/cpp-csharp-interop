@@ -156,7 +156,7 @@ namespace AngioViewer
                 newItem.UpperOffset = array["upper_offset"];
                 // lower layer
                 newItem.LowerLayer = MeasurementData.Ins.findBScanLayerByName(array["lower_layer"].Value);
-                newItem.UpperOffset = array["lower_offset"];
+                newItem.LowerOffset = array["lower_offset"];
 
                 // data map list
                 var arrDataMap = array["data_map_list"];

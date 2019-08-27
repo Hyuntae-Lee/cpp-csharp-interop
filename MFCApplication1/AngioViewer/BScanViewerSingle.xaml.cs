@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 
 namespace AngioViewer
 {
-    
-
     /// <summary>
     /// Interaction logic for BScanViewerSingle.xaml
     /// </summary>
     public partial class BScanViewerSingle : UserControl
     {
         public event Action<MeasurementData.BScanLayerItem, int, MeasurementData.BScanLayerItem, int> LayerSettingsChanged;
+        public event Action<int> BScanIndexChanged;
 
         public BScanViewerSingle()
         {
@@ -30,12 +29,25 @@ namespace AngioViewer
 
             layerSelectorUpper.ItemSettingChanged += LayerSelectorUpper_ItemSettingChanged;
             layerSelectorLower.ItemSettingChanged += LayerSelectorLower_ItemSettingChanged;
+
+            bscanChangeBtn.ButtonClicked += BscanChangeBtn_ButtonClicked;
+        }
+
+        private void BscanChangeBtn_ButtonClicked(int obj)
+        {
+            BScanIndexChanged(obj);
         }
 
         public void setLayerSettings(MeasurementData.BScanLayerItem upperLayer, int upperOffset, MeasurementData.BScanLayerItem lowerLayer, int lowerOffset)
         {
             layerSelectorUpper.setLayerSettings(upperLayer, upperOffset);
             layerSelectorLower.setLayerSettings(lowerLayer, lowerOffset);
+        }
+
+        public void updateBScanImage(int index)
+        {
+            String imagePath = MeasurementData.Ins.CurExamInfo.DataDir + "/" + index.ToString("000") + ".jpg";
+            itemImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
         private void notifyChanges()

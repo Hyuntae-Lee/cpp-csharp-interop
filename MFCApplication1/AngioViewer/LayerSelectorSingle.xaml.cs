@@ -34,6 +34,7 @@ namespace AngioViewer
         public void setLayerSettings(MeasurementData.BScanLayerItem layer, int offset)
         {
             layerSelector.selectLayer(layer);
+            layerOffset.Text = offset.ToString();
         }
 
         private void LayerSelector_ItemSelected(MeasurementData.BScanLayerItem obj)

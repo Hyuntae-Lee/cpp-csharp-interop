@@ -35,13 +35,41 @@ namespace AngioViewer
             angiography_3.MouseLeftButtonDown += Angiography_MouseLeftButtonDown;
             angiography_4.MouseLeftButtonDown += Angiography_MouseLeftButtonDown;
 
+            angiography_0.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged;
+            angiography_1.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged;
+            angiography_2.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged;
+            angiography_3.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged;
+            angiography_4.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged;
+            dataMap_0.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged;
+
             // bscan
             bscanViewer.LayerSettingsChanged += BscanViewer_LayerSettingsChanged;
+            bscanViewer.BScanIndexChanged += BscanViewer_BScanIndexChanged;
+        }
+
+        private void GuideLine_ScanIndexChanged(int value, int maxValue)
+        {
+            BScanIndex = (int)((float)(MeasurementData.Ins.CurExamInfo.BScanNum - 1) / (float)maxValue * (float)value);
         }
 
         public void initPage()
         {
             selectAngiographyItem(angiography_0);
+            BScanIndex = 0;
+        }
+
+        private void BscanViewer_BScanIndexChanged(int obj)
+        {
+            // inc
+            if (obj > 0)
+            {
+                BScanIndex++;
+            }
+            // dec
+            else
+            {
+                BScanIndex--;
+            }
         }
 
         private void BscanViewer_LayerSettingsChanged(MeasurementData.BScanLayerItem arg1, int arg2, MeasurementData.BScanLayerItem arg3, int arg4)
@@ -94,5 +122,36 @@ namespace AngioViewer
         }
 
         private String DataDir { get; set; }
+        private int BScanIndex
+        {
+            get
+            {
+                return m_bscanIndex;
+            }
+
+            set
+            {
+                if (!(value >= 0 && value < MeasurementData.Ins.CurExamInfo.BScanNum - 1))
+                {
+                    return;
+                }
+
+                m_bscanIndex = value;
+
+                bscanViewer.updateBScanImage(m_bscanIndex);
+
+                bool isVertical = !MeasurementData.Ins.CurExamInfo.Horizontal;
+                int nMaxBScanIndex = MeasurementData.Ins.CurExamInfo.BScanNum - 1;
+
+                angiography_0.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);
+                angiography_1.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);
+                angiography_2.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);
+                angiography_3.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);
+                angiography_4.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);
+                dataMap_0.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);
+            }
+        }
+
+        private int m_bscanIndex;
     }
 }

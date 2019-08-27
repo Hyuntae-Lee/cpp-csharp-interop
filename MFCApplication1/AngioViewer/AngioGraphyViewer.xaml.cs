@@ -32,6 +32,12 @@ namespace AngioViewer
             m_dataMapList = new List<MeasurementData.DataMapItem>();
         }
 
+        public void setBScanIndex(int index, int maxValue, bool isVertical)
+        {
+            guideLine.IsVertical = isVertical;
+            guideLine.setLineIndex(index, maxValue);
+        }
+
         public void setItemList(List<MeasurementData.AngiographyItem> itemList, int defaultIndex, String dataPath)
         {
             if (m_angiographyItemList == null)
