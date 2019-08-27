@@ -70,6 +70,9 @@
     <Compile Include="BScanIncDecBtn.xaml.cs">
       <DependentUpon>BScanIncDecBtn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BScanViewerDetail.xaml.cs">
+      <DependentUpon>BScanViewerDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BScanViewerSingle.xaml.cs">
       <DependentUpon>BScanViewerSingle.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,9 @@
       <DependentUpon>LayerSelectorSingle.xaml</DependentUpon>
     </Compile>
     <Compile Include="MeasurementData.cs" />
+    <Compile Include="PageTitleBoth.xaml.cs">
+      <DependentUpon>PageTitleBoth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageTitleSingle.xaml.cs">
       <DependentUpon>PageTitleSingle.xaml</DependentUpon>
     </Compile>
@@ -101,6 +107,12 @@
     </Compile>
     <Compile Include="SinglePage.xaml.cs">
       <DependentUpon>SinglePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SinglePageBodyDetail.xaml.cs">
+      <DependentUpon>SinglePageBodyDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SinglePageBodyNormal.xaml.cs">
+      <DependentUpon>SinglePageBodyNormal.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabBar.xaml.cs">
       <DependentUpon>TabBar.xaml</DependentUpon>
@@ -119,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BScanIncDecBtn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BScanViewerDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,6 +170,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageTitleBoth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageTitleSingle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +187,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SinglePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SinglePageBodyDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SinglePageBodyNormal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

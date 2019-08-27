@@ -20,6 +20,8 @@ namespace AngioViewer
     /// </summary>
     public partial class AngioGraphyViewer : UserControl
     {
+        public event Action<MeasurementData.AngiographyItem> AngiographyItemSelectionChanged;
+
         public AngioGraphyViewer()
         {
             InitializeComponent();
@@ -98,20 +100,21 @@ namespace AngioViewer
             itemSelector.changeCurrentSelection(index);
         }
 
-        private void ItemSelector_ItemSelected(int obj)
+        private void ItemSelector_ItemSelected(int index)
         {
             // angiography
             if (m_angiographyItemList.Count > 0)
             {
-                
-                var item = m_angiographyItemList.ElementAt(obj);
+                var item = m_angiographyItemList.ElementAt(index);
                 var imagePath = DataPath + "/" + item.ImageName;
                 itemImage.Source = new BitmapImage(new Uri(imagePath));
+
+                AngiographyItemSelectionChanged(item);
             }
             // data map
             else if (m_dataMapList.Count > 0)
             {
-                var item = m_dataMapList.ElementAt(obj);
+                var item = m_dataMapList.ElementAt(index);
                 var imagePath = DataPath + "/" + item.ImageName;
                 itemImage.Source = new BitmapImage(new Uri(imagePath));
             }

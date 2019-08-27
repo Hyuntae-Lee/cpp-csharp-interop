@@ -26,7 +26,7 @@
 
         <Grid Grid.Row="2" Background="#1F2329">
             <Image Name="itemImage" Width="558" Height="240" Stretch="Fill" Source="images/angiography_sample.jpg"/>
-            <uc:BScanIncDecBtn x:Name="bscanChangeBtn" Margin="552,102,40,18" />
+            <uc:BScanIncDecBtn x:Name="bscanChangeBtn" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,20" />
         </Grid>
     </Grid>
 </UserControl>

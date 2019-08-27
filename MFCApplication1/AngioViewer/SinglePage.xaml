@@ -13,35 +13,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <!-- page title bar -->
         <Grid Grid.Row="0">
             <uc:PageTitleSingle x:Name="pageTitle" />
         </Grid>
-        <!-- first line -->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <uc:AngioGraphyViewer x:Name="angiography_0" Grid.Column="0" Margin="4"/>
-            <uc:AngioGraphyViewer x:Name="angiography_1" Grid.Column="1" Margin="4"/>
-            <uc:AngioGraphyViewer x:Name="angiography_2" Grid.Column="2" Margin="4"/>
-            <uc:AngioGraphyViewer x:Name="angiography_3" Grid.Column="3" Margin="4"/>
-        </Grid>
-        <!-- second line -->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <uc:AngioGraphyViewer x:Name="angiography_4" Grid.Column="0" Margin="4"/>
-            <uc:AngioGraphyViewer x:Name="dataMap_0" Grid.Column="1" Margin="4"/>
-            <uc:BScanViewerSingle x:Name="bscanViewer" Grid.Column="2" Margin="4"/>
-        </Grid>
+        <!-- body -->
+        <Frame Name="body" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>
