@@ -82,7 +82,7 @@ namespace AngioViewer
 
         private void GuideLine_ScanIndexChanged(int value, int maxValue)
         {
-            BScanIndex = (int)((float)(MeasurementData.Ins.CurExamInfo.BScanNum - 1) / (float)maxValue * (float)value);
+            BScanIndex = (int)((float)(MeasurementData.Ins.Self.ExamInfo.BScanNum - 1) / (float)maxValue * (float)value);
         }
 
         public void initPage()
@@ -126,7 +126,7 @@ namespace AngioViewer
             viewer.BorderBrush = kAngiographyViewBrushSelected;
 
             // data map
-            dataMap_0.setItemList(item.DataMapList, 0, DataDir);
+            dataMap_0.setItemList(item.DataMapList, 0, MeasurementData.Ins.Self.ExamInfo.DataDir);
 
             // bscan
             bscanViewer.setLayerSettings(item.UpperLayer, item.UpperOffset, item.LowerLayer, item.LowerOffset);
@@ -141,17 +141,13 @@ namespace AngioViewer
         public void updateData(MeasurementData.ExamInfo examInfo, List<MeasurementData.AngiographyItem> angiographyList)
         {
             //
-            DataDir = examInfo.DataDir;
-
-            //
-            angiography_0.setItemList(angiographyList, 0, DataDir);
-            angiography_1.setItemList(angiographyList, 1, DataDir);
-            angiography_2.setItemList(angiographyList, 2, DataDir);
-            angiography_3.setItemList(angiographyList, 3, DataDir);
-            angiography_4.setItemList(angiographyList, 4, DataDir);
+            angiography_0.setItemList(angiographyList, 0, examInfo.DataDir);
+            angiography_1.setItemList(angiographyList, 1, examInfo.DataDir);
+            angiography_2.setItemList(angiographyList, 2, examInfo.DataDir);
+            angiography_3.setItemList(angiographyList, 3, examInfo.DataDir);
+            angiography_4.setItemList(angiographyList, 4, examInfo.DataDir);
         }
 
-        private String DataDir { get; set; }
         private int BScanIndex
         {
             get
@@ -161,7 +157,7 @@ namespace AngioViewer
 
             set
             {
-                if (!(value >= 0 && value < MeasurementData.Ins.CurExamInfo.BScanNum - 1))
+                if (!(value >= 0 && value < MeasurementData.Ins.Self.ExamInfo.BScanNum - 1))
                 {
                     return;
                 }
@@ -170,8 +166,8 @@ namespace AngioViewer
 
                 bscanViewer.updateBScanImage(m_bscanIndex);
 
-                bool isVertical = !MeasurementData.Ins.CurExamInfo.Horizontal;
-                int nMaxBScanIndex = MeasurementData.Ins.CurExamInfo.BScanNum - 1;
+                bool isVertical = !MeasurementData.Ins.Self.ExamInfo.Horizontal;
+                int nMaxBScanIndex = MeasurementData.Ins.Self.ExamInfo.BScanNum - 1;
 
                 angiography_0.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);
                 angiography_1.setBScanIndex(m_bscanIndex, nMaxBScanIndex, isVertical);

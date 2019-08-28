@@ -70,6 +70,9 @@
     <Compile Include="BScanIncDecBtn.xaml.cs">
       <DependentUpon>BScanIncDecBtn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BScanViewerBoth.xaml.cs">
+      <DependentUpon>BScanViewerBoth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BScanViewerDetail.xaml.cs">
       <DependentUpon>BScanViewerDetail.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
     </Compile>
     <Compile Include="CompPage.xaml.cs">
       <DependentUpon>CompPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LayerSelectorBoth.xaml.cs">
+      <DependentUpon>LayerSelectorBoth.xaml</DependentUpon>
     </Compile>
     <Compile Include="LayerSelectorSingle.xaml.cs">
       <DependentUpon>LayerSelectorSingle.xaml</DependentUpon>
@@ -134,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BScanViewerBoth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BScanViewerDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CompPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LayerSelectorBoth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

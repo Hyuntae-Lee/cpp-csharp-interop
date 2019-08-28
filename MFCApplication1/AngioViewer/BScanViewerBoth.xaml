@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AngioViewer.BScanViewerSingle"
+﻿<UserControl x:Class="AngioViewer.BScanViewerBoth"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:AngioViewer"
              xmlns:uc="clr-namespace:AngioViewer"
              mc:Ignorable="d" 
-             Width="628">
+             Height="306" Width="428">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="2" />
-            <RowDefinition Height="266" />
+            <RowDefinition Height="4" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -20,13 +20,13 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
-            <uc:LayerSelectorSingle x:Name="layerSelectorUpper" Grid.Column="0"/>
-            <uc:LayerSelectorSingle x:Name="layerSelectorLower" Grid.Column="2"/>
+            <uc:LayerSelectorBoth x:Name="layerSelectorUpper" Grid.Column="0"/>
+            <uc:LayerSelectorBoth x:Name="layerSelectorLower" Grid.Column="2"/>
         </Grid>
 
         <Grid Grid.Row="2" Background="#1F2329">
-            <Image Name="itemImage" Width="558" Height="240" Stretch="Fill" Source="images/angiography_sample.jpg"/>
-            <uc:BScanIncDecBtn x:Name="bscanChangeBtn" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,20" />
+            <Image Name="itemImage" Width="412" Height="200" Stretch="Fill" Source="images/angiography_sample.jpg"/>
+            <uc:BScanIncDecBtn x:Name="bscanChangeBtn" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,12,20" />
         </Grid>
     </Grid>
 </UserControl>

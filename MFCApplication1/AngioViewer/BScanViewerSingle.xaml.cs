@@ -46,7 +46,7 @@ namespace AngioViewer
 
         public void updateBScanImage(int index)
         {
-            String imagePath = MeasurementData.Ins.CurExamInfo.DataDir + "/" + index.ToString("000") + ".jpg";
+            String imagePath = MeasurementData.Ins.Self.ExamInfo.DataDir + "/" + index.ToString("000") + ".jpg";
             itemImage.Source = new BitmapImage(new Uri(imagePath));
         }
 

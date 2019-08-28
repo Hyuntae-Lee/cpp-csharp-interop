@@ -10,26 +10,26 @@ namespace AngioViewer
 {
     class Utils
     {
-        public static void LoadJsonTo(String filePath, MeasurementData measurementData)
+        public static void LoadJsonTo(String filePath, MeasurementData.Item measurementData)
         {
             // read file
             var contents = File.ReadAllText(filePath);
             dynamic array = JsonConvert.DeserializeObject(contents);
 
             // angiography list
-            var arrAngioGraphy = array["angiography_list"];
+            var arrAngiography = array["angiography_list"];
             List<MeasurementData.AngiographyItem> angiographyList = new List<MeasurementData.AngiographyItem>();
-            foreach (var item in arrAngioGraphy)
+            foreach (var angiography in arrAngiography)
             {
-                var newItem = MeasurementData.AngiographyItem.fromJson(item);
-                angiographyList.Add(newItem);
+                var newAngiography = MeasurementData.AngiographyItem.fromJson(angiography);
+                angiographyList.Add(newAngiography);
             }
-            measurementData.CurAngiographyItemList.Clear();
-            measurementData.CurAngiographyItemList.AddRange(angiographyList);
+            measurementData.AngiographyItemList.Clear();
+            measurementData.AngiographyItemList.AddRange(angiographyList);
             // exam info
-            measurementData.CurExamInfo = MeasurementData.ExamInfo.fromJson(array["exam_info"]);
+            measurementData.ExamInfo = MeasurementData.ExamInfo.fromJson(array["exam_info"]);
             // patient info
-            measurementData.CurPatientData = MeasurementData.PatientData.fromJson(array["patient_info"]);
+            measurementData.PatientData = MeasurementData.PatientData.fromJson(array["patient_info"]);
         }
     }
 }

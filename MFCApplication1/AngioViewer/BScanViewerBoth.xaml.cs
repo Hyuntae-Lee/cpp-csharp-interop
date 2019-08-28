@@ -16,23 +16,26 @@ using System.Windows.Shapes;
 namespace AngioViewer
 {
     /// <summary>
-    /// Interaction logic for BScanViewerDetail.xaml
+    /// Interaction logic for BScanViewerBoth.xaml
     /// </summary>
-    public partial class BScanViewerDetail : UserControl
+    public partial class BScanViewerBoth : UserControl
     {
         public event Action<MeasurementData.BScanLayerItem, int, MeasurementData.BScanLayerItem, int> LayerSettingsChanged;
         public event Action<int> BScanIndexChanged;
 
-        public BScanViewerDetail()
+        public BScanViewerBoth()
         {
             InitializeComponent();
-
 
             layerSelectorUpper.ItemSettingChanged += LayerSelectorUpper_ItemSettingChanged;
             layerSelectorLower.ItemSettingChanged += LayerSelectorLower_ItemSettingChanged;
 
-            bscanChangeBtn_0.ButtonClicked += BscanChangeBtn_ButtonClicked;
-            bscanChangeBtn_1.ButtonClicked += BscanChangeBtn_ButtonClicked;
+            bscanChangeBtn.ButtonClicked += BscanChangeBtn_ButtonClicked;
+        }
+
+        private void BscanChangeBtn_ButtonClicked(int obj)
+        {
+            BScanIndexChanged(obj);
         }
 
         public void setLayerSettings(MeasurementData.BScanLayerItem upperLayer, int upperOffset, MeasurementData.BScanLayerItem lowerLayer, int lowerOffset)
@@ -41,26 +44,10 @@ namespace AngioViewer
             layerSelectorLower.setLayerSettings(lowerLayer, lowerOffset);
         }
 
-        public void updateBScanImage(int index)
+        public void updateBScanImage(String dataDir, int index)
         {
-            String imagePath = MeasurementData.Ins.Self.ExamInfo.DataDir + "/" + index.ToString("000") + ".jpg";
-            itemImage_0.Source = new BitmapImage(new Uri(imagePath));
-            itemImage_1.Source = new BitmapImage(new Uri(imagePath));
-        }
-
-        private void BscanChangeBtn_ButtonClicked(int obj)
-        {
-            BScanIndexChanged(obj);
-        }
-
-        private void LayerSelectorLower_ItemSettingChanged(MeasurementData.BScanLayerItem arg1, int arg2)
-        {
-            notifyChanges();
-        }
-
-        private void LayerSelectorUpper_ItemSettingChanged(MeasurementData.BScanLayerItem arg1, int arg2)
-        {
-            notifyChanges();
+            String imagePath = dataDir + "/" + index.ToString("000") + ".jpg";
+            itemImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
         private void notifyChanges()
@@ -83,6 +70,16 @@ namespace AngioViewer
             }
 
             LayerSettingsChanged(upperLayer, upperOffset, lowerLayer, lowerOffset);
+        }
+
+        private void LayerSelectorLower_ItemSettingChanged(MeasurementData.BScanLayerItem layerItem, int offset)
+        {
+            notifyChanges();
+        }
+
+        private void LayerSelectorUpper_ItemSettingChanged(MeasurementData.BScanLayerItem layerItem, int offset)
+        {
+            notifyChanges();
         }
     }
 }

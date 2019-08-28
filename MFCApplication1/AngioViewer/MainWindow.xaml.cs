@@ -20,6 +20,9 @@ namespace AngioViewer
     /// </summary>
     public partial class MainWindow : Window
     {
+        // parameters : store parameters as member variable for debugging
+        public String DataDirSelf { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,12 +33,10 @@ namespace AngioViewer
             m_compPage = new CompPage();
             m_progPage = new ProgPage();
 
-            // TTT
-            MeasurementData.Ins.DataDir = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD";
-
             // load data
-            String infoFilePath = MeasurementData.Ins.DataDir + "/" + Defs.kAngioGraphyInfoFileName;
-            Utils.LoadJsonTo(infoFilePath, MeasurementData.Ins);
+            String infoFilePath = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD/" + Defs.kAngioGraphyInfoFileName;
+            //String infoFilePath = DataDirSelf + "/" + Defs.kAngioGraphyInfoFileName;
+            Utils.LoadJsonTo(infoFilePath, MeasurementData.Ins.Self);
 
             // patient info. bar
             patientInfo.refreshData();
@@ -54,7 +55,7 @@ namespace AngioViewer
 
         private void updatePageData()
         {
-            m_singlePage.updateData(MeasurementData.Ins.CurExamInfo, MeasurementData.Ins.CurAngiographyItemList);
+            m_singlePage.updateData(MeasurementData.Ins.Self.ExamInfo, MeasurementData.Ins.Self.AngiographyItemList);
 
             //m_bothPage;
             //m_compPage;

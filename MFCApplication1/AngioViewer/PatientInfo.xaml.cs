@@ -29,7 +29,7 @@ namespace AngioViewer
 
         public void refreshData()
         {
-            PatientInfoString = MeasurementData.Ins.CurPatientData.toString();
+            PatientInfoString = MeasurementData.Ins.Self.PatientData.toString();
         }
 
         public String PatientInfoString { set; get; }

@@ -22,7 +22,8 @@ namespace AngioViewer
 
         private MeasurementData()
         {
-            CurAngiographyItemList = new List<AngiographyItem>();
+            Self = new Item();
+            //OtherSide = new Item();
         }
 
         public static MeasurementData Ins
@@ -55,13 +56,52 @@ namespace AngioViewer
             return kBScanLayers[0];
         }
 
-        public String DataDir { get; set; }
         public readonly BScanLayerItem[] kBScanLayers = { kLayerILM, kLayerNFL, kLayerIPL, kLayerOPL, kLayerIOS, kLayerRPE, kLayerBRM };
-        public List<AngiographyItem> CurAngiographyItemList;
-        public PatientData CurPatientData { get; set; }
-        public ExamInfo CurExamInfo { get; set; }
+
+        public Item Self { get; set; }
+        public Item OtherSide { get; set; }
+        public Item OD
+        {
+            get
+            {
+                if (Self.ExamInfo.Side == EyeSide.OD)
+                {
+                    return Self;
+                }
+                else
+                {
+                    return OtherSide;
+                }
+            }
+        }
+        public Item OS
+        {
+            get
+            {
+                if (Self.ExamInfo.Side == EyeSide.OS)
+                {
+                    return Self;
+                }
+                else
+                {
+                    return OtherSide;
+                }
+            }
+        }
 
         // inner classes
+        public class Item
+        {
+            public Item()
+            {
+                AngiographyItemList = new List<AngiographyItem>();
+            }
+
+            public List<AngiographyItem> AngiographyItemList;
+            public PatientData PatientData { get; set; }
+            public ExamInfo ExamInfo { get; set; }
+        }
+
         public class PatientData
         {
             public String BirthDate { get; set; }
@@ -253,6 +293,4 @@ namespace AngioViewer
             int Section_4;
         }
     }
-
-
 }
