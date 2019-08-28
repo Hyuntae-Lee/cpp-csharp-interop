@@ -20,10 +20,6 @@ namespace AngioViewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        // parameters : store parameters as member variable for debugging
-        public String DataDirSelf { get; set; }
-        public String DBFilePath { get; set; }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -35,18 +31,17 @@ namespace AngioViewer
             m_progPage = new ProgPage();
 
             // TTT
-            DataDirSelf = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD";
-            DBFilePath = "D:/projects/etc/cpp-csharp-interop/MFCApplication1/MFCApplication1/HCT_DB.db";
+            //MeasurementData.Ins.DataDirSelf = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD";
+            //OctDBAccessor.Ins.DBFilePath = "D:/projects/etc/cpp-csharp-interop/MFCApplication1/MFCApplication1/HCT_DB.db";
 
             //
-            OctDBAccessor.Ins.DBFilePath = DBFilePath;
-            String infoFilePath = DataDirSelf + "/" + Defs.kAngioGraphyInfoFileName;
+            String infoFilePath = MeasurementData.Ins.DataDirSelf + "/" + Defs.kAngioGraphyInfoFileName;
 
             // load data
             // - self
             Utils.LoadJsonTo(infoFilePath, MeasurementData.Ins.Self);
             // - other side
-            var dirForOtherSide = OctDBAccessor.Ins.getOtherSide(DataDirSelf, MeasurementData.Ins.Self.ExamInfo.Side);
+            var dirForOtherSide = OctDBAccessor.Ins.getOtherSide(MeasurementData.Ins.DataDirSelf, MeasurementData.Ins.Self.ExamInfo.Side);
             if (dirForOtherSide != null)
             {
                 Utils.LoadJsonTo(dirForOtherSide + "/" + Defs.kAngioGraphyInfoFileName,

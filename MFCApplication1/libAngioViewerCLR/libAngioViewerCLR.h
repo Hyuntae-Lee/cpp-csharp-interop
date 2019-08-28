@@ -19,6 +19,6 @@ namespace libAngioViewerCLR {
 __declspec(dllexport) void open_angio_viewer(char* data_dir, char* db_file_path)
 {
 	String^ strDataDir = gcnew String(data_dir);
-	String^ strDBFIlePAth = gcnew String(db_file_path);
-	libAngioViewerCLR::Viewer::open_viewer(strDataDir, strDBFIlePAth);
+	String^ strDBFIlePath = gcnew String(db_file_path);
+	libAngioViewerCLR::Viewer::open_viewer(strDataDir, strDBFIlePath);
 }

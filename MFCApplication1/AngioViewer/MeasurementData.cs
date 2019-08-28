@@ -20,6 +20,8 @@ namespace AngioViewer
         public static readonly BScanLayerItem kLayerRPE = new BScanLayerItem(BScanLayerIndex.RPE, "RPE", Color.FromArgb(255, 120,   0));
         public static readonly BScanLayerItem kLayerBRM = new BScanLayerItem(BScanLayerIndex.BRM, "BRM", Color.FromArgb(144,   0, 255));
 
+        public String DataDirSelf { get; set; }
+
         private MeasurementData()
         {
             Self = new Item();

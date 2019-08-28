@@ -15,11 +15,18 @@ namespace AngioViewer
 
         private SQLiteConnection Connection;
 
+        private String m_dbFilePath;
+
         public String DBFilePath
         {
+            get
+            {
+                return m_dbFilePath;
+            }
             set
             {
-                Connection.ConnectionString = String.Format("Data Source={0};Version=3;", value); ;
+                m_dbFilePath = value;
+                Connection.ConnectionString = String.Format("Data Source={0};Version=3;", m_dbFilePath); ;
             }
         }
 
