@@ -40,12 +40,12 @@ namespace AngioViewer
             updateBody();
         }
         
-        public void updateData(MeasurementData.ExamInfo examInfo, List<MeasurementData.AngiographyItem> angiographyList)
+        public void updateData()
         {
-            pageTitle.ExamDescription = examInfo.toString();
+            pageTitle.ExamDescription = MeasurementData.Ins.Self.ExamInfo.toString();
 
-            m_bodyNormal.updateData(examInfo, angiographyList);
-            m_bodyDetail.updateData(examInfo, angiographyList);
+            m_bodyNormal.updateData(MeasurementData.Ins.Self.ExamInfo, MeasurementData.Ins.Self.AngiographyItemList);
+            m_bodyDetail.updateData(MeasurementData.Ins.Self.ExamInfo, MeasurementData.Ins.Self.AngiographyItemList);
         }
 
         public void updateBody()

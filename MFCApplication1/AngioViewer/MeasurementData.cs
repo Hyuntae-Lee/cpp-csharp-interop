@@ -23,7 +23,7 @@ namespace AngioViewer
         private MeasurementData()
         {
             Self = new Item();
-            //OtherSide = new Item();
+            OtherSide = new Item();
         }
 
         public static MeasurementData Ins

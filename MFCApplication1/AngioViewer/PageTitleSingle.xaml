@@ -17,7 +17,7 @@
         <!-- measurement info. -->
         <Label Grid.Column="1" Content="{Binding ExamDescription, Mode = OneWay}" Foreground="white" VerticalAlignment="Center"/>
         <!-- detail button -->
-        <ToggleButton Name="pageModeToggle" Grid.Column="2" Width="97" Height="34" HorizontalAlignment="Left" Margin="80,3,0,3">
+        <ToggleButton Name="pageModeToggle" Grid.Column="2" Width="97" Height="34" HorizontalAlignment="Right" Margin="0,3,20,3">
             <ToggleButton.Template>
                 <ControlTemplate TargetType="ToggleButton">
                     <Image Name="bgImage" Source="images/detail_tog_1.png"/>

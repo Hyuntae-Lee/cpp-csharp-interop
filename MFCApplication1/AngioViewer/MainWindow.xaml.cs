@@ -22,6 +22,7 @@ namespace AngioViewer
     {
         // parameters : store parameters as member variable for debugging
         public String DataDirSelf { get; set; }
+        public String DBFilePath { get; set; }
 
         public MainWindow()
         {
@@ -33,64 +34,83 @@ namespace AngioViewer
             m_compPage = new CompPage();
             m_progPage = new ProgPage();
 
+            // TTT
+            DataDirSelf = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD";
+            DBFilePath = "D:/projects/etc/cpp-csharp-interop/MFCApplication1/MFCApplication1/HCT_DB.db";
+
+            //
+            OctDBAccessor.Ins.DBFilePath = DBFilePath;
+            String infoFilePath = DataDirSelf + "/" + Defs.kAngioGraphyInfoFileName;
+
             // load data
-            String infoFilePath = "D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD/" + Defs.kAngioGraphyInfoFileName;
-            //String infoFilePath = DataDirSelf + "/" + Defs.kAngioGraphyInfoFileName;
+            // - self
             Utils.LoadJsonTo(infoFilePath, MeasurementData.Ins.Self);
+            // - other side
+            var dirForOtherSide = OctDBAccessor.Ins.getOtherSide(DataDirSelf, MeasurementData.Ins.Self.ExamInfo.Side);
+            if (dirForOtherSide != null)
+            {
+                Utils.LoadJsonTo(dirForOtherSide + "/" + Defs.kAngioGraphyInfoFileName,
+                    MeasurementData.Ins.OtherSide);
+            }
 
             // patient info. bar
             patientInfo.refreshData();
-
-            // page
-            updatePageData();
 
             // tab
             this.tabBar.PageButtonClicked += TabBar_PageButtonClicked;
 
             // default page
-            SwitchPage(m_singlePage);
+            switchToSinglePage();
+        }
 
+        private void switchToSinglePage()
+        {
+            page.Content = m_singlePage;
+            m_singlePage.updateData();
             m_singlePage.initPage();
         }
 
-        private void updatePageData()
+        private void switchToBothPage()
         {
-            m_singlePage.updateData(MeasurementData.Ins.Self.ExamInfo, MeasurementData.Ins.Self.AngiographyItemList);
-
-            //m_bothPage;
-            //m_compPage;
-            //m_progPage;
+            page.Content = m_bothPage;
+            m_bothPage.updateData();
+            m_bothPage.initPage();
         }
 
-        private void SwitchPage(Page page)
+        private void switchToCompPage()
         {
-            this.page.Content = page;
+            page.Content = m_compPage;
+        }
+
+        private void switchToProgPage()
+        {
+            page.Content = m_progPage;
         }
 
         private void TabBar_PageButtonClicked(string obj)
         {
             if (obj == Defs.kPageNameSingle)
             {
-                SwitchPage(m_singlePage);
+                switchToSinglePage();
             }
             else if (obj == Defs.kPageNameBoth)
             {
-                SwitchPage(m_bothPage);
+                switchToBothPage();
             }
             else if (obj == Defs.kPageNameCompare)
             {
-                SwitchPage(m_compPage);
+                switchToCompPage();
             }
             else if (obj == Defs.kPageNameProgression)
             {
-                SwitchPage(m_progPage);
+                switchToProgPage();
             }
         }
 
         // pages
-         SinglePage m_singlePage;
-         BothPage m_bothPage;
-         CompPage m_compPage;
-         ProgPage m_progPage;
+        SinglePage m_singlePage;
+        BothPage m_bothPage;
+        CompPage m_compPage;
+        ProgPage m_progPage;
     }
 }

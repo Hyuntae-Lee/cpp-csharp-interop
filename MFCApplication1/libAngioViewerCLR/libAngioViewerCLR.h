@@ -10,14 +10,15 @@ namespace libAngioViewerCLR {
 	public ref class Viewer
 	{
 	public:
-		static void open_viewer(String^ data_dir) {
-			libAngioViewer::Entry::open_viewer(data_dir);
+		static void open_viewer(String^ data_dir, String^ db_file_path) {
+			libAngioViewer::Entry::open_viewer(data_dir, db_file_path);
 		}
 	};
 }
 
-__declspec(dllexport) void open_angio_viewer(char* data_dir)
+__declspec(dllexport) void open_angio_viewer(char* data_dir, char* db_file_path)
 {
-	String^ str = gcnew String(data_dir);
-	libAngioViewerCLR::Viewer::open_viewer(str);
+	String^ strDataDir = gcnew String(data_dir);
+	String^ strDBFIlePAth = gcnew String(db_file_path);
+	libAngioViewerCLR::Viewer::open_viewer(strDataDir, strDBFIlePAth);
 }

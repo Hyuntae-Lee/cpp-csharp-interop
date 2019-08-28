@@ -29,8 +29,6 @@ namespace AngioViewer
             // angio graphy
             angiography_od.AngiographyItemSelectionChanged += Angiography_od_AngiographyItemSelectionChanged;
             angiography_os.AngiographyItemSelectionChanged += Angiography_os_AngiographyItemSelectionChanged;
-            dataMap_od.AngiographyItemSelectionChanged += DataMap_od_AngiographyItemSelectionChanged;
-            dataMap_os.AngiographyItemSelectionChanged += DataMap_os_AngiographyItemSelectionChanged;
 
             angiography_od.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_od;
             angiography_os.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_os;
@@ -50,67 +48,113 @@ namespace AngioViewer
             BScanIndex_OS = 0;
         }
 
-        public void updateData(MeasurementData.ExamInfo examInfo_od, List<MeasurementData.AngiographyItem> angiographyList_od,
-            MeasurementData.ExamInfo examInfo_os, List<MeasurementData.AngiographyItem> angiographyList_os)
+        public void updateData()
         {
-            angiography_od.setItemList(angiographyList_od, 0, examInfo_od.DataDir);
-            var item_od = angiography_od.getCurrentAngiographyItem();
+            // od
+            {
+                var measData = MeasurementData.Ins.OD;
+                var angiographyView = angiography_od;
+                var dataMapView = dataMap_od;
+                var bscanView = bscanViewer_od;
+                if (measData != null)
+                {
+                    angiographyView.setItemList(measData.AngiographyItemList, 0, measData.ExamInfo.DataDir);
+                    var item = angiographyView.getCurrentAngiographyItem();
 
-            // data map
-            dataMap_od.setItemList(item_od.DataMapList, 0, examInfo_od.DataDir);
+                    // data map
+                    dataMapView.setItemList(item.DataMapList, 0, measData.ExamInfo.DataDir);
 
-            // bscan
-            bscanViewer_od.setLayerSettings(item_od.UpperLayer, item_od.UpperOffset, item_od.LowerLayer, item_od.LowerOffset);
+                    // bscan
+                    bscanView.setLayerSettings(item.UpperLayer, item.UpperOffset, item.LowerLayer, item.LowerOffset);
+                }
+            }
+
+            // os
+            {
+                var measData = MeasurementData.Ins.OS;
+                var angiographyView = angiography_os;
+                var dataMapView = dataMap_os;
+                var bscanView = bscanViewer_os;
+                if (measData != null)
+                {
+                    angiographyView.setItemList(measData.AngiographyItemList, 0, measData.ExamInfo.DataDir);
+                    var item = angiographyView.getCurrentAngiographyItem();
+
+                    // data map
+                    dataMapView.setItemList(item.DataMapList, 0, measData.ExamInfo.DataDir);
+
+                    // bscan
+                    bscanView.setLayerSettings(item.UpperLayer, item.UpperOffset, item.LowerLayer, item.LowerOffset);
+                }
+            }
         }
 
         private void BscanViewer_os_BScanIndexChanged(int obj)
         {
-            throw new NotImplementedException();
+            // inc
+            if (obj > 0)
+            {
+                BScanIndex_OS++;
+            }
+            // dec
+            else
+            {
+                BScanIndex_OS--;
+            }
         }
 
         private void BscanViewer_os_LayerSettingsChanged(MeasurementData.BScanLayerItem arg1, int arg2, MeasurementData.BScanLayerItem arg3, int arg4)
         {
-            throw new NotImplementedException();
+            // TODO
+            //throw new NotImplementedException();
         }
 
         private void BscanViewer_od_BScanIndexChanged(int obj)
         {
-            throw new NotImplementedException();
+            // inc
+            if (obj > 0)
+            {
+                BScanIndex_OD++;
+            }
+            // dec
+            else
+            {
+                BScanIndex_OD--;
+            }
         }
 
         private void BscanViewer_od_LayerSettingsChanged(MeasurementData.BScanLayerItem arg1, int arg2, MeasurementData.BScanLayerItem arg3, int arg4)
         {
-            throw new NotImplementedException();
+            // TODO
+            //throw new NotImplementedException();
         }
 
-        private void GuideLine_ScanIndexChanged_od(int arg1, int arg2)
+        private void GuideLine_ScanIndexChanged_od(int value, int maxValue)
         {
-            throw new NotImplementedException();
+            BScanIndex_OD = (int)((float)(MeasurementData.Ins.OD.ExamInfo.BScanNum - 1) / (float)maxValue * (float)value);
         }
 
-        private void GuideLine_ScanIndexChanged_os(int arg1, int arg2)
+        private void GuideLine_ScanIndexChanged_os(int value, int maxValue)
         {
-            throw new NotImplementedException();
+            BScanIndex_OS = (int)((float)(MeasurementData.Ins.OS.ExamInfo.BScanNum - 1) / (float)maxValue * (float)value);
         }
 
-        private void DataMap_os_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem obj)
+        private void Angiography_os_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem item)
         {
-            throw new NotImplementedException();
+            // data map
+            dataMap_os.setItemList(item.DataMapList, 0, MeasurementData.Ins.OS.ExamInfo.DataDir);
+
+            // bscan
+            bscanViewer_os.setLayerSettings(item.UpperLayer, item.UpperOffset, item.LowerLayer, item.LowerOffset);
         }
 
-        private void DataMap_od_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem obj)
+        private void Angiography_od_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem item)
         {
-            throw new NotImplementedException();
-        }
+            // data map
+            dataMap_od.setItemList(item.DataMapList, 0, MeasurementData.Ins.OD.ExamInfo.DataDir);
 
-        private void Angiography_os_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Angiography_od_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem obj)
-        {
-            throw new NotImplementedException();
+            // bscan
+            bscanViewer_od.setLayerSettings(item.UpperLayer, item.UpperOffset, item.LowerLayer, item.LowerOffset);
         }
 
         private int BScanIndex_OD

@@ -13,7 +13,7 @@
 #define new DEBUG_NEW
 #endif
 
-__declspec(dllexport) void open_angio_viewer(char* data_dir);
+__declspec(dllexport) void open_angio_viewer(char* data_dir, char* db_file_path);
 
 // CMFCApplication1App
 
@@ -108,7 +108,8 @@ BOOL CMFCApplication1App::InitInstance()
 	pFrame->ShowWindow(SW_SHOW);
 	pFrame->UpdateWindow();
 
-	open_angio_viewer("D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD");
+	open_angio_viewer("D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD",
+		"D:/projects/etc/cpp-csharp-interop/MFCApplication1/MFCApplication1/HCT_DB.db");
 
 	return TRUE;
 }
