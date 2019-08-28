@@ -56,54 +56,46 @@ namespace AngioViewer
             // patient info. bar
             patientInfo.refreshData();
 
+            updateData();
+
             // tab
-            this.tabBar.PageButtonClicked += TabBar_PageButtonClicked;
+            tabBar.PageButtonClicked += TabBar_PageButtonClicked;
 
             // default page
-            switchToSinglePage();
+            switchPage(m_singlePage);
         }
 
-        private void switchToSinglePage()
+        private void updateData()
         {
-            page.Content = m_singlePage;
             m_singlePage.updateData();
             m_singlePage.initPage();
-        }
 
-        private void switchToBothPage()
-        {
-            page.Content = m_bothPage;
             m_bothPage.updateData();
             m_bothPage.initPage();
         }
 
-        private void switchToCompPage()
+        private void switchPage(Page targetPage)
         {
-            page.Content = m_compPage;
-        }
-
-        private void switchToProgPage()
-        {
-            page.Content = m_progPage;
+            page.Content = targetPage;
         }
 
         private void TabBar_PageButtonClicked(string obj)
         {
             if (obj == Defs.kPageNameSingle)
             {
-                switchToSinglePage();
+                switchPage(m_singlePage);
             }
             else if (obj == Defs.kPageNameBoth)
             {
-                switchToBothPage();
+                switchPage(m_bothPage);
             }
             else if (obj == Defs.kPageNameCompare)
             {
-                switchToCompPage();
+                switchPage(m_compPage);
             }
             else if (obj == Defs.kPageNameProgression)
             {
-                switchToProgPage();
+                switchPage(m_progPage);
             }
         }
 

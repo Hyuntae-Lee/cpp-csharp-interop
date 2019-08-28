@@ -23,6 +23,11 @@ namespace AngioViewer
         public PageTitleBoth()
         {
             InitializeComponent();
+
+            DataContext = this;
         }
+
+        public String ExamDescription_OD { get; set; }
+        public String ExamDescription_OS { get; set; }
     }
 }

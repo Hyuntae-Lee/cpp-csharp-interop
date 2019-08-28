@@ -58,6 +58,8 @@ namespace AngioViewer
                 var bscanView = bscanViewer_od;
                 if (measData != null)
                 {
+                    pageTitle.ExamDescription_OD = measData.ExamInfo.toString();
+
                     angiographyView.setItemList(measData.AngiographyItemList, 0, measData.ExamInfo.DataDir);
                     var item = angiographyView.getCurrentAngiographyItem();
 
@@ -77,6 +79,8 @@ namespace AngioViewer
                 var bscanView = bscanViewer_os;
                 if (measData != null)
                 {
+                    pageTitle.ExamDescription_OS = measData.ExamInfo.toString();
+
                     angiographyView.setItemList(measData.AngiographyItemList, 0, measData.ExamInfo.DataDir);
                     var item = angiographyView.getCurrentAngiographyItem();
 

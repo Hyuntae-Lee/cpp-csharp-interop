@@ -10,24 +10,16 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
-        <!-- eye side -->
+        <!-- od -->
         <Image Grid.Column="0" Source="images/od.png" Width="44" Height="26"/>
-        <!-- measurement info. -->
-        <Label Grid.Column="1" Content="{Binding ExamDescription, Mode = OneWay}" Foreground="white" VerticalAlignment="Center"/>
-        <!-- detail button -->
-        <ToggleButton Name="pageModeToggle" Grid.Column="2" Width="97" Height="34" HorizontalAlignment="Left" Margin="80,3,0,3">
-            <ToggleButton.Template>
-                <ControlTemplate TargetType="ToggleButton">
-                    <Image Name="bgImage" Source="images/detail_tog_1.png"/>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="bgImage" Property="Source" Value="images/detail_tog_2.png" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </ToggleButton.Template>
-        </ToggleButton>
+        <!-- measurement info. od -->
+        <Label Grid.Column="1" Content="{Binding ExamDescription_OD, Mode = OneWay}" Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <!-- measurement info. os -->
+        <Label Grid.Column="2" Content="{Binding ExamDescription_OS, Mode = OneWay}" Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <!-- os -->
+        <Image Grid.Column="3" Source="images/os.png" Width="44" Height="26" HorizontalAlignment="Right" Margin="0, 0, 10, 0"/>
     </Grid>
 </UserControl>
