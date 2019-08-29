@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,8 +116,28 @@ namespace AngioViewer
             else if (m_dataMapList.Count > 0)
             {
                 var item = m_dataMapList.ElementAt(index);
-                var imagePath = DataPath + "/" + item.ImageName;
-                itemImage.Source = new BitmapImage(new Uri(imagePath));
+
+                if (item.U16Data != null)
+                {
+                    int width = item.U16Data[0].Count;
+                    int height = item.U16Data.Count;
+
+                    Bitmap bmp = new Bitmap(width, height);
+                    for (int y = 0; y < height; y++)
+                    {
+                        for (int x = 0; x < width; x++)
+                        {
+                            bmp.SetPixel(x, y, Utils.getDepthCodeColor(item.U16Data[y][x]));
+                        }
+                    }
+
+                    itemImage.Source = Utils.BitmapToImageSource(bmp);
+                }
+                else
+                {
+                    var imagePath = DataPath + "/" + item.ImageName;
+                    itemImage.Source = new BitmapImage(new Uri(imagePath));
+                }
             }
         }
 

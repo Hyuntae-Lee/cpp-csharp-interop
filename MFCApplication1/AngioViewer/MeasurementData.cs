@@ -186,7 +186,7 @@ namespace AngioViewer
             public AngioFlows Flows { get; set; }
             public AngioDensity Density { get; set; }
 
-            public static AngiographyItem fromJson(dynamic array)
+            public static AngiographyItem fromJson(dynamic array, String dataDir)
             {
                 var newItem = new AngiographyItem();
 
@@ -210,6 +210,14 @@ namespace AngioViewer
                 }
                 newItem.DataMapList.Clear();
                 newItem.DataMapList.AddRange(dataMapList);
+
+                // additional data map
+                // - depth coded map
+                DataMapItem depthCodedMap = new DataMapItem();
+                depthCodedMap.Name = "Depth coded map";
+                depthCodedMap.ImageName = newItem.ImageName.Substring(0, newItem.ImageName.IndexOf('.')) + "_depthCodeMap.png";
+                depthCodedMap.parseDepthCodedMap(dataDir);
+                newItem.DataMapList.Add(depthCodedMap);
 
                 return newItem;
             }
@@ -256,6 +264,7 @@ namespace AngioViewer
         {
             public String ImageName { get; set; }
             public String Name { get; set; }
+            public List<List<UInt16>> U16Data { get; set; }
 
             public static DataMapItem fromJson(dynamic array)
             {
@@ -266,6 +275,33 @@ namespace AngioViewer
                 newItem.Name = array["name"];
 
                 return newItem;
+            }
+
+            public void parseDepthCodedMap(String dataDir)
+            {
+                if (ImageName == null || dataDir == null || dataDir.Length == 0)
+                {
+                    return;
+                }
+
+                // path
+                var imagePath = dataDir + "/" + ImageName;
+
+                // image
+                var bmp = new Bitmap(imagePath);
+                U16Data = new List<List<UInt16>>();
+                for (int y = 0; y < bmp.Height; y++)
+                {
+                    var line = new List<UInt16>();
+                    for (int x = 0; x < bmp.Width; x++)
+                    {
+                        var cl = bmp.GetPixel(x, y);
+                        UInt16 greyValue = (UInt16)((cl.R * 0.3) + (cl.G * 0.59) + (cl.B * 0.11));
+                        line.Add(greyValue);
+                    }
+
+                    U16Data.Add(line);
+                }
             }
         }
 
