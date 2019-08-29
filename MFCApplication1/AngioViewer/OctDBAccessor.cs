@@ -52,6 +52,40 @@ namespace AngioViewer
             }
         }
 
+        public List<String> getCompables(String dataDir, MeasurementData.EyeSide side)
+        {
+            if (Connection == null)
+            {
+                return null;
+            }
+
+            int mySide = side == MeasurementData.EyeSide.OD ? 1 : 2;
+
+            // self
+            var pathPair = parseDataDir(dataDir);
+            var examPath = pathPair.Item1;
+            var scanItemPath = pathPair.Item2;
+            var examId = getExamIdByFilePath(examPath);
+            var scanInfo = getScanInfoByFilePath(examId, scanItemPath);
+            var candidateList = getScanItemListByData(scanInfo.examId, scanInfo.ascans,
+                scanInfo.bscans, scanInfo.scan_w, scanInfo.scan_h, scanInfo.scan_direction,
+                scanInfo.patternIdx, mySide);
+
+            List<String> itemList = new List<string>();
+            foreach (var item in candidateList)
+            {
+                String targetDatadir = Path.Combine(examPath, item.file_path);
+                if (Path.GetFileName(dataDir) == item.file_path)
+                {
+                    continue;
+                }
+
+                itemList.Add(targetDatadir);
+            }
+
+            return itemList;
+        }
+
         public String getOtherSide(String dataDir, MeasurementData.EyeSide side)
         {
             if (Connection == null)

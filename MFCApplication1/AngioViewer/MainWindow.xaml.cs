@@ -43,6 +43,14 @@ namespace AngioViewer
             {
                 Utils.LoadJsonTo(dirForOtherSide, Defs.kAngioGraphyInfoFileName, MeasurementData.Ins.OtherSide);
             }
+            // - comparables
+            var dirListForComp = OctDBAccessor.Ins.getCompables(MeasurementData.Ins.DataDirSelf, MeasurementData.Ins.Self.ExamInfo.Side);
+            if (dirListForComp.Count > 0)
+            {
+                var compItem = new MeasurementData.Item();
+                Utils.LoadJsonTo(dirForOtherSide, Defs.kAngioGraphyInfoFileName, compItem);
+                MeasurementData.Ins.CompList.Add(compItem);
+            }
 
             // patient info. bar
             patientInfo.refreshData();
@@ -63,6 +71,9 @@ namespace AngioViewer
 
             m_bothPage.updateData();
             m_bothPage.initPage();
+
+            m_compPage.updateData();
+            m_compPage.initPage();
         }
 
         private void switchPage(Page targetPage)

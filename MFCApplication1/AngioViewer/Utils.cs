@@ -41,44 +41,19 @@ namespace AngioViewer
 
         public static Color getDepthCodeColor(UInt16 value)
         {
-            if (value < 10)
+            if (value < kDepthCodeValueMin)
             {
                 return Color.Black;
             }
-            else if (value < 20)
+
+            if (value > kDepthCodeValueMax)
             {
-                return Color.FromKnownColor(KnownColor.Green);
-            }
-            else if (value < 30)
-            {
-                return Color.FromKnownColor(KnownColor.Yellow);
-            }
-            else if (value < 30)
-            {
-                return Color.FromKnownColor(KnownColor.Blue);
-            }
-            else if (value < 40)
-            {
-                return Color.FromKnownColor(KnownColor.Red);
-            }
-            else
-            {
-                return Color.White;
+                value = kDepthCodeValueMax;
             }
 
-            //if (value < kDepthCodeValueMin)
-            //{
-            //    return Color.Black;
-            //}
+            double hueValue = kDepthCodeValueMax - value;
 
-            //if (value > kDepthCodeValueMax)
-            //{
-            //    value = kDepthCodeValueMax;
-            //}
-
-            //double hueValue = kDepthCodeValueMax - value;
-
-            //return HSVtoRGB(hueValue / (double)kDepthCodeValueMax * 240.0, 1.0, 1.0);
+            return HSVtoRGB(hueValue / (double)kDepthCodeValueMax * 240.0, 1.0, 1.0);
         }
 
         private static Color HSVtoRGB(double hue, double saturation, double value)

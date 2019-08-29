@@ -26,18 +26,17 @@ namespace AngioViewer
 
             DataContext = this;
 
-            // angio graphy
+            // od
             angiography_od.AngiographyItemSelectionChanged += Angiography_od_AngiographyItemSelectionChanged;
-            angiography_os.AngiographyItemSelectionChanged += Angiography_os_AngiographyItemSelectionChanged;
-
             angiography_od.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_od;
-            angiography_os.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_os;
             dataMap_od.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_od;
-            dataMap_os.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_os;
-
-            // bscan
             bscanViewer_od.LayerSettingsChanged += BscanViewer_od_LayerSettingsChanged;
             bscanViewer_od.BScanIndexChanged += BscanViewer_od_BScanIndexChanged;
+
+            // os
+            angiography_os.AngiographyItemSelectionChanged += Angiography_os_AngiographyItemSelectionChanged;
+            angiography_os.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_os;
+            dataMap_os.guideLine.ScanIndexChanged += GuideLine_ScanIndexChanged_os;
             bscanViewer_os.LayerSettingsChanged += BscanViewer_os_LayerSettingsChanged;
             bscanViewer_os.BScanIndexChanged += BscanViewer_os_BScanIndexChanged;
         }
@@ -135,16 +134,31 @@ namespace AngioViewer
 
         private void GuideLine_ScanIndexChanged_od(int value, int maxValue)
         {
+            if (MeasurementData.Ins.OD == null)
+            {
+                return;
+            }
+
             BScanIndex_OD = (int)((float)(MeasurementData.Ins.OD.ExamInfo.BScanNum - 1) / (float)maxValue * (float)value);
         }
 
         private void GuideLine_ScanIndexChanged_os(int value, int maxValue)
         {
+            if (MeasurementData.Ins.OS == null)
+            {
+                return;
+            }
+
             BScanIndex_OS = (int)((float)(MeasurementData.Ins.OS.ExamInfo.BScanNum - 1) / (float)maxValue * (float)value);
         }
 
         private void Angiography_os_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem item)
         {
+            if (MeasurementData.Ins.OS == null)
+            {
+                return;
+            }
+
             // data map
             dataMap_os.setItemList(item.DataMapList, 0, MeasurementData.Ins.OS.ExamInfo.DataDir);
 
@@ -154,6 +168,11 @@ namespace AngioViewer
 
         private void Angiography_od_AngiographyItemSelectionChanged(MeasurementData.AngiographyItem item)
         {
+            if (MeasurementData.Ins.OD == null)
+            {
+                return;
+            }
+
             // data map
             dataMap_od.setItemList(item.DataMapList, 0, MeasurementData.Ins.OD.ExamInfo.DataDir);
 
@@ -170,6 +189,11 @@ namespace AngioViewer
 
             set
             {
+                if (MeasurementData.Ins.OD == null)
+                {
+                    return;
+                }
+
                 if (!(value >= 0 && value < MeasurementData.Ins.OD.ExamInfo.BScanNum - 1))
                 {
                     return;
@@ -196,6 +220,11 @@ namespace AngioViewer
 
             set
             {
+                if (MeasurementData.Ins.OS == null)
+                {
+                    return;
+                }
+
                 if (!(value >= 0 && value < MeasurementData.Ins.OS.ExamInfo.BScanNum - 1))
                 {
                     return;

@@ -26,6 +26,7 @@ namespace AngioViewer
         {
             Self = new Item();
             OtherSide = new Item();
+            CompList = new List<Item>();
         }
 
         public static MeasurementData Ins
@@ -62,6 +63,7 @@ namespace AngioViewer
 
         public Item Self { get; set; }
         public Item OtherSide { get; set; }
+        public List<Item> CompList { get; set; }
         public Item OD
         {
             get
