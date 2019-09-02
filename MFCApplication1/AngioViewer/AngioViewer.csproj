@@ -99,9 +99,13 @@
     <Compile Include="BScanViewerDetail.xaml.cs">
       <DependentUpon>BScanViewerDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BScanViewerProg.xaml.cs">
+      <DependentUpon>BScanViewerProg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BScanViewerSingle.xaml.cs">
       <DependentUpon>BScanViewerSingle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CmdManager.cs" />
     <Compile Include="ComboLayerSelector.xaml.cs">
       <DependentUpon>ComboLayerSelector.xaml</DependentUpon>
     </Compile>
@@ -169,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BScanViewerDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BScanViewerProg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -101,6 +101,16 @@ namespace AngioViewer
                 AngiographyItemList = new List<AngiographyItem>();
             }
 
+            public bool isEmpty()
+            {
+                if (AngiographyItemList.Count <= 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
             public List<AngiographyItem> AngiographyItemList;
             public PatientData PatientData { get; set; }
             public ExamInfo ExamInfo { get; set; }

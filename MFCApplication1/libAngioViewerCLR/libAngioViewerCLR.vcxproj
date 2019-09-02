@@ -158,6 +158,9 @@
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AngioViewer\AngioViewer.csproj">
+      <Project>{2e034380-c013-451c-8d86-f12fdeea8dcb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\libAngioViewer\libAngioViewer.csproj">
       <Project>{4656d210-c019-42a4-91fb-2faa260509e6}</Project>
     </ProjectReference>

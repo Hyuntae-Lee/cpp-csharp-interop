@@ -8,12 +8,11 @@
 #include "MFCApplication1.h"
 #include "MainFrm.h"
 
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-__declspec(dllexport) void open_angio_viewer(char* data_dir, char* db_file_path);
+__declspec(dllexport) void open_angio_viewer(char* data_dir, char* db_file_path, void* pCB_req_reCalc);
 
 // CMFCApplication1App
 
@@ -49,6 +48,14 @@ CMFCApplication1App theApp;
 
 
 // CMFCApplication1App initialization
+
+int s_angioviewer_cb_req_reCalc(char* dataDir)
+{ 
+	MessageBox(NULL, _T("s_angioviewer_cb_req_reCalc"), CString(dataDir), NULL);
+
+	return 11111111;
+}
+
 
 BOOL CMFCApplication1App::InitInstance()
 {
@@ -109,7 +116,8 @@ BOOL CMFCApplication1App::InitInstance()
 	pFrame->UpdateWindow();
 
 	open_angio_viewer("D:/HCT_DATA/20190614/000002/OCT_190614_165757_OD",
-		"D:/projects/etc/cpp-csharp-interop/MFCApplication1/MFCApplication1/HCT_DB.db");
+		"D:/projects/etc/cpp-csharp-interop/MFCApplication1/MFCApplication1/HCT_DB.db",
+		s_angioviewer_cb_req_reCalc);
 
 	return TRUE;
 }

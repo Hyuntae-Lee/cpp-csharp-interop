@@ -24,6 +24,10 @@ namespace AngioViewer
         {
             InitializeComponent();
 
+            //
+            this.FontFamily = new FontFamily("Noto Sans CJK KR Medium");
+            this.FontSize = 16;
+
             // init. controls
             m_singlePage = new SinglePage();
             m_bothPage = new BothPage();
@@ -54,14 +58,21 @@ namespace AngioViewer
 
             // patient info. bar
             patientInfo.refreshData();
+            patientInfo.btnReCalc.Click += BtnReCalc_Click;
 
             updateData();
 
             // tab
+            tabBar.updateData();
             tabBar.PageButtonClicked += TabBar_PageButtonClicked;
 
             // default page
             switchPage(m_singlePage);
+        }
+
+        private void BtnReCalc_Click(object sender, RoutedEventArgs e)
+        {
+            CmdManager.Ins.ReqReCalc(MeasurementData.Ins.Self.ExamInfo.DataDir);
         }
 
         private void updateData()

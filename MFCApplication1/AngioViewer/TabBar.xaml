@@ -7,13 +7,13 @@
              mc:Ignorable="d" Background="#242530"
              Height="50" Width="1280">
     <Grid>
-        <Button Style="{DynamicResource TabButton}" Margin="-372,6,0,6" Content="Single" Click="OnSingleButtonClick"/>
-        <Button Style="{DynamicResource TabButton}" Margin="-125,6,0,6" Content="Both" Click="OnBothButtonClick"/>
-        <Button Style="{DynamicResource TabButton}" Margin="125,6,0,6" Content="Compare" Click="OnCompareButtonClick"/>
-        <Button Style="{DynamicResource TabButton}" Margin="372,6,0,6" Content="Progression" Click="OnProgressionButtonClick"/>
+        <ToggleButton Name="btnSingle" Style="{DynamicResource TabButton}" Margin="-372,6,0,6" Content="Single" Click="OnSingleButtonClick"/>
+        <ToggleButton Name="btnBoth" Style="{DynamicResource TabButton}" Margin="-125,6,0,6" Content="Both" Click="OnBothButtonClick"/>
+        <ToggleButton Name="btnComp" Style="{DynamicResource TabButton}" Margin="125,6,0,6" Content="Compare" Click="OnCompareButtonClick"/>
+        <ToggleButton Name="btnProg" Style="{DynamicResource TabButton}" Margin="372,6,0,6" Content="Progression" Click="OnProgressionButtonClick"/>
     </Grid>
     <UserControl.Resources>
-        <Style TargetType="{x:Type Button}" x:Key="TabButton">
+        <Style TargetType="{x:Type ToggleButton}" x:Key="TabButton">
             <Setter Property="Width" Value="120"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -23,7 +23,7 @@
             <!-- Prevent default action -->
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
+                    <ControlTemplate TargetType="ToggleButton">
                         <Grid Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>
@@ -37,6 +37,13 @@
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" Value="#2B84F0"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="#2B84F0"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#393F49"/>
+                    <Setter Property="Foreground" Value="Gray"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
